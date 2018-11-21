@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration package="log4j.test" 
+               status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d{HH:mm:ss.SSS}] [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <File name="file" fileName="logs/message_etl_errors.log" append="true">
+	        <PatternLayout pattern="%d %-5p [%t] %-17c{2} (%13F:%L) %3x = %m%n" />
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="log4j.test.Log4jTest" level="trace">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="error" level="ERROR" additivity="false">
+			<AppenderRef ref="file"/>
+		</Logger>
+        <Root level="trace">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
